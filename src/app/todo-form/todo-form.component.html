@@ -1,0 +1,24 @@
+<div>
+  <form #form="ngForm">
+    <div class="form-group">
+      <label for="title">Título</label><br>
+      <input type="text" class="form-control" id="title" name="title" [(ngModel)]="todo.title" minlength="5" #title="ngModel" required>
+      <small *ngIf="title?.touched && title?.errors?.required">O campo título é obrigatório</small>
+      <small *ngIf="title?.touched && title?.errors?.minlength">O campo deve ter {{title?.errors.minlength.requiredLength}} caracteres no mínimo</small>
+    </div>
+    <div class="form-group">
+      <label for="description">Descrição</label><br>
+      <textarea id="description" class="form-control" name="description" [(ngModel)]="todo.description" minlength="5" #description="ngModel" required></textarea>
+      <small *ngIf="description?.touched && description?.errors?.required">O campo descrição é obrigatório</small>
+      <small *ngIf="description?.touched && description?.errors?.minlength">O campo deve ter {{description?.errors.minlength.requiredLength}} caracteres no mínimo</small>
+    </div>
+    <div class="form-group">
+      <label for="date">Data</label><br>
+      <input type="date" class="form-control" id="date" name="date" [(ngModel)]="todo.date" minlength="5" #date="ngModel" required>
+      <small *ngIf="date?.touched && date?.errors?.required">O campo data é obrigatório</small>
+      <small *ngIf="date?.touched && date?.errors?.minlength">O campo deve ter {{date?.errors.date.invalid}} caracteres no mínimo</small>
+    </div>
+    <input type="checkbox" id="finished" name="finished" [(ngModel)]="todo.finished">Finalizado<br><br>
+    <button type="submit" [disabled]="form.invalid" (click)="onFormSend()"  class="btn btn-primary">Enviar</button>
+  </form>
+</div>

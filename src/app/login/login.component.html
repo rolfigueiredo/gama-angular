@@ -1,0 +1,17 @@
+<div>
+    <form #form="ngForm">
+      <div>
+        <label for="email">E-mail: </label><br>
+        <input type="text" id="email" name="email" [(ngModel)]="login.email" minlength="5" #email="ngModel" required>
+        <small *ngIf="email?.touched && email?.errors?.required">O campo E-MAIL é obrigatório</small>
+        <small *ngIf="email?.touched && email?.errors?.minlength">O campo E-MAIL deve ter {{email?.errors.minlength.requiredLength}} caracteres no mínimo</small>
+      </div>
+      <div>
+        <label for="password">Senha: </label><br>
+        <input type="password" id="password" name="password" [(ngModel)]="login.password" minlength="6" #password="ngModel" required>
+        <small *ngIf="password?.touched && password?.errors?.required">O campo SENHA é obrigatório</small>
+        <small *ngIf="password?.touched && password?.errors?.minlength">O campo SENHA deve ter {{password?.errors.minlength.requiredLength}} caracteres no mínimo</small>
+      </div><br>
+      <button type="submit" [disabled]="form.invalid" (click)="onFormSend()">Logar</button>
+    </form>
+  </div>

@@ -1,0 +1,8 @@
+<div>
+  <b>ID: </b> {{item.id}}<br>
+  <b>Título: </b> {{item.title | uppercase}}<br>
+  <b>Descrição: </b> {{item.description}}<br>
+  <b>Finalizado: </b> {{item.finished | bool}}<br>
+  <b>Data: </b> {{item.date | date:'dd/MM/yyyy'}}<br>
+  <button (click)="editar()">Editar</button> <button (click)="apagar()">Excluir</button>
+</div>
